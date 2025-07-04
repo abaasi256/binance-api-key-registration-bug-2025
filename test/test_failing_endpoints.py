@@ -137,7 +137,45 @@ def test_retrieve_chat_credential():
     response = requests.get(url, headers=headers)
     print(f"Status: {response.status_code}, Response: {response.text}")
     return response.status_code, response.text
-f"Summary: {failing_count}/{total_tests} endpoints confirmed failing with -2008 error")
+
+def run_all_tests():
+    """Run all failing endpoint tests."""
+    if API_KEY == "YOUR_API_KEY_HERE":
+        print("❌ Please update API_KEY and SECRET_KEY in the script")
+        return
+    
+    print("Binance P2P API Failing Endpoints Test Suite")
+    print("=" * 50)
+    print("Expected: All endpoints should return -2008 error")
+    print("=" * 50)
+    
+    failing_count = 0
+    total_tests = 5
+    
+    tests = [
+        test_get_available_ads_category,
+        test_search_ads,
+        test_get_reference_price,
+        test_get_user_order_summary,
+        test_retrieve_chat_credential
+    ]
+    
+    for i, test_func in enumerate(tests, 1):
+        print(f"\n[{i}/{total_tests}] ", end="")
+        try:
+            status, response = test_func()
+            if status == 400 and "-2008" in response:
+                print("✅ CONFIRMED: -2008 error as expected")
+                failing_count += 1
+            else:
+                print("❓ UNEXPECTED: Different response than expected")
+        except Exception as e:
+            print(f"❌ ERROR: {e}")
+        
+        time.sleep(1)  # Rate limiting
+    
+    print(f"\n" + "=" * 50)
+    print(f"Summary: {failing_count}/{total_tests} endpoints confirmed failing with -2008 error")
     print("This confirms the API key registration bug affecting P2P endpoints")
     print("=" * 50)
 
