@@ -15,6 +15,7 @@
 ### Security
 - Sanitized all API keys and sensitive information from public documentation
 - Replaced actual API keys with placeholder values in test scripts
+- Masked merchant ID showing only partial digits (171****89) for privacy protection
 
 ### Documentation
 - Documented 6 P2P endpoints with 1 working, 5 failing
