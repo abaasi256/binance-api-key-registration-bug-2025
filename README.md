@@ -1,5 +1,14 @@
 # Binance API Key Registration Bug Report - 2025
 
+![GitHub Repo](https://img.shields.io/badge/Repository-binance--api--key--registration--bug--2025-blue)
+![Bug Status](https://img.shields.io/badge/Status-Under%20Investigation-orange)
+![Binance Case](https://img.shields.io/badge/Support%20Case-%23144098731-red)
+![API Endpoints](https://img.shields.io/badge/Affected%20Endpoints-5%2F6-red)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen)
+![Language](https://img.shields.io/badge/Language-Python-blue)
+![Documentation](https://img.shields.io/badge/Documentation-Complete-brightgreen)
+
 **Discovery Date:** July 3, 2025  
 **Reporter:** Security Research Team  
 **Status:** Under Investigation by Binance Backend Team  
