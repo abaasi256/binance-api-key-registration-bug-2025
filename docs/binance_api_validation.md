@@ -4,7 +4,7 @@
 - **Timestamp**: 2025-07-04 23:29:15 UTC
 - **API Key Suffix**: ...XXXX (Sanitized)
 - **Support Case**: #144098731
-- **Merchant ID**: 17133189
+- **Merchant ID**: 171****89 (Sanitized)
 - **API Version**: `/sapi/v1`
 - **Base URL**: `https://api.binance.com`
 
