@@ -39,19 +39,47 @@ Thumbs.db
 
 # Logs
 *.log
+logs/
 
-# Sensitive files
+# Sensitive files - Binance API credentials
 config.py
 secrets.py
 .env
 *.key
 *.pem
+*api_key*
+*secret*
+*credential*
 
-# Reports with sensitive data
-docs/binance_api_validation.pdf
+# Temporary files
+temp/
+tmp/
+*.tmp
+optimize_repo.py
+timestam.py
 
 # Test outputs
 test_results/
 coverage/
 .coverage
 .pytest_cache/
+
+# Personal notes and drafts
+notes/
+drafts/
+personal_*
+
+# Backup files
+*.bak
+*.backup
+*_backup*
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# System files
+*.pid
+*.lock
+CLEANUP_STATUS.md

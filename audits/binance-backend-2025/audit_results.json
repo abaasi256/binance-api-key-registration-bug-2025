@@ -1,0 +1,133 @@
+{
+  "test_timestamp": "2025-07-06T01:41:48.985869",
+  "approaches": {
+    "getAds (KNOWN WORKING)": {
+      "Original July 2025": {
+        "status_code": 200,
+        "success": true,
+        "error_code": null,
+        "error_msg": null,
+        "response_preview": ""
+      },
+      "Form URL-encoded": {
+        "status_code": 200,
+        "success": true,
+        "error_code": null,
+        "error_msg": null,
+        "response_preview": ""
+      },
+      "With clientType header": {
+        "status_code": 200,
+        "success": true,
+        "error_code": null,
+        "error_msg": null,
+        "response_preview": ""
+      },
+      "JSON body POST": {
+        "status_code": 200,
+        "success": true,
+        "error_code": null,
+        "error_msg": null,
+        "response_preview": ""
+      }
+    },
+    "getAvailableAdsCategory": {
+      "Original July 2025": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "Form URL-encoded": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "With clientType header": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "JSON body POST": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      }
+    },
+    "search (ads)": {
+      "Original July 2025": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "Form URL-encoded": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "With clientType header": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "JSON body POST": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      }
+    },
+    "getReferencePrice": {
+      "Original July 2025": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "Form URL-encoded": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "With clientType header": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      },
+      "JSON body POST": {
+        "status_code": 400,
+        "success": false,
+        "error_code": -2008,
+        "error_msg": "Invalid Api-Key ID.",
+        "response_preview": "{\"code\":-2008,\"msg\":\"Invalid Api-Key ID.\"}"
+      }
+    }
+  },
+  "verdicts": [],
+  "final_verdict": {
+    "conclusion": "BACKEND_PARTIAL_FIX",
+    "best_approach": "Original July 2025",
+    "working_endpoints": 1,
+    "total_endpoints": 4,
+    "success_rate": 25.0
+  }
+}

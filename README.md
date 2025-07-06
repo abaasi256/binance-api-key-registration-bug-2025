@@ -1,100 +1,220 @@
-# Binance API Key Registration Bug Report - 2025
+# Binance P2P API Key Registration Bug - Case #144098731
 
-![GitHub Repo](https://img.shields.io/badge/Repository-binance--api--key--registration--bug--2025-blue)
-![Bug Status](https://img.shields.io/badge/Status-Under%20Investigation-orange)
-![Binance Case](https://img.shields.io/badge/Support%20Case-%23144098731-red)
-![API Endpoints](https://img.shields.io/badge/Affected%20Endpoints-5%2F6-red)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen)
-![Language](https://img.shields.io/badge/Language-Python-blue)
-![Documentation](https://img.shields.io/badge/Documentation-Complete-brightgreen)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status: Backend Fix Required](https://img.shields.io/badge/Status-Backend%20Fix%20Required-red.svg)](https://github.com)
+[![Binance Support](https://img.shields.io/badge/Binance%20Support-Case%20%23144098731-blue.svg)](https://github.com)
 
-**Discovery Date:** July 3, 2025  
-**Reporter:** Security Research Team  
-**Status:** Under Investigation by Binance Backend Team  
-**Support Case:** #144098731  
+> **Complete documentation of Binance P2P API key registration issue and resolution process**
 
-## Bug Summary
+## 🚨 **Issue Summary**
 
-A critical inconsistency has been discovered in Binance's `/sapi/v1/c2c/` endpoint behavior where a valid API key works on some endpoints but fails with error `-2008 "Invalid Api-Key ID"` on others.
+This repository documents a critical **Binance P2P API key registration bug** where valid API credentials fail on specific P2P endpoints with `-2008 Invalid Api-Key ID` error, despite working correctly on other endpoints.
 
-**Impact:** Prevents developers from accessing essential P2P trading functionality despite having valid, authenticated API credentials.
-
-## Quick Facts
-
-- **Working Endpoints:** 1/6 tested (16.7% success rate)
-- **Failing Endpoints:** 5/6 tested (83.3% failure rate)  
-- **Error Pattern:** Consistent `-2008` error across failing endpoints
-- **Root Cause:** Backend API key registration inconsistency
-
-## Affected Endpoints
-
-### ✅ Working
-- `GET /sapi/v1/c2c/ads/getAds` - Returns 200 OK
-
-### ❌ Failing (Error -2008)
-- `GET /sapi/v1/c2c/ads/getAvailableAdsCategory`
-- `POST /sapi/v1/c2c/ads/search`
-- `POST /sapi/v1/c2c/ads/getReferencePrice`
-- `GET /sapi/v1/c2c/orderMatch/getUserOrderSummary`
-- `GET /sapi/v1/c2c/chat/retrieveChatCredential`
-
-## Reproduction Steps
-
-1. Generate valid Binance API key with P2P trading permissions
-2. Test `getAds` endpoint → **Success (200 OK)**
-3. Test any other P2P endpoint → **Failure (-2008)**
-4. Verify same credentials, signature method, headers across all tests
-
-## Technical Details
-
-The bug is confirmed to be server-side because:
-- Same API key works on one endpoint but fails on others
-- Identical authentication method (HMAC-SHA256) used across all tests
-- Consistent error pattern suggests backend registration issue
-- Multiple Binance support agents have escalated to backend team
-
-## Repository Structure
-
-```
-├── README.md                    # This file
-├── DISCLOSURE.md               # Timeline and disclosure process
-├── LICENSE                     # MIT License
-├── .gitignore                 # Python gitignore
-├── docs/
-│   └── binance_api_validation.md    # Detailed technical report
-└── test/
-    ├── test_working_endpoint.py     # Test for working getAds endpoint
-    ├── test_failing_endpoints.py    # Test suite for failing endpoints
-    └── requirements.txt             # Python dependencies
-```
-
-## Documentation
-
-- **[Complete Technical Report](docs/binance_api_validation.md)** - Detailed analysis with code examples
-- **[Disclosure Timeline](DISCLOSURE.md)** - Responsible disclosure process
-
-**Note:** PDF report excluded from repository due to sensitive information.
-
-## Test Code
-
-Ready-to-run Python test scripts are available in the `/test` directory to reproduce this issue.
-
-## Disclaimer
-
-This repository is for **transparency and developer awareness** only. We are working with Binance through official channels to resolve this issue. This is not a security vulnerability but rather a system inconsistency that affects legitimate API usage.
-
-## Current Status
-
-- **Reported:** July 3, 2025 (Support Case #144098731)
-- **Escalated:** To Binance Backend Team via CS Fajer
-- **HackerOne Access:** Requested for formal bug bounty submission
-- **Resolution:** Pending backend team investigation
-
-## Contact
-
-For technical questions about reproduction steps or additional test cases, please open an issue in this repository.
+### **Key Facts**
+- **Issue Type:** Backend API key registration problem (Binance-side)
+- **Affected Endpoints:** `/sapi/v1/c2c/ads/search`, `/sapi/v1/c2c/ads/getReferencePrice`, and others
+- **Working Endpoints:** `/sapi/v1/c2c/ads/getAds` (proves credentials are valid)
+- **Support Case:** #144098731
+- **Status:** Awaiting Binance backend team resolution
 
 ---
 
-**⚠️ Important:** This bug affects legitimate API usage and should be resolved to ensure consistent developer experience across Binance's P2P trading API endpoints.
+## 📋 **Repository Contents**
+
+### **📄 Core Documentation**
+- **[Support Timeline](docs/binance_support_timeline.md)** - Complete case history and technical analysis
+- **[API Validation Report](docs/binance_api_validation.md)** - Detailed testing results
+- **[Audit Results](audits/binance-backend-2025/)** - Comprehensive endpoint testing
+
+### **🧪 Test Scripts**
+- **[Failing Endpoints Test](test/test_failing_endpoints.py)** - Demonstrates the bug
+- **[Working Endpoint Test](test/test_working_endpoint.py)** - Proves credentials work
+- **[Requirements](test/requirements.txt)** - Python dependencies
+
+### **📚 Reference Materials**
+- **[Original Binance Guides](Original_Binance_Guides/)** - Official documentation from support
+- **[Security Policy](SECURITY.md)** - Responsible disclosure information
+- **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute
+
+---
+
+## 🔍 **The Issue Explained**
+
+### **What's Happening**
+```bash
+# This works ✅
+curl -X GET "https://api.binance.com/sapi/v1/c2c/ads/getAds?..."
+# Returns: 200 OK with valid data
+
+# This fails ❌
+curl -X POST "https://api.binance.com/sapi/v1/c2c/ads/search?..."
+# Returns: {"code":-2008,"msg":"Invalid Api-Key ID."}
+```
+
+### **Why It's a Backend Issue**
+1. **Same API Key:** Both requests use identical credentials
+2. **Correct Format:** Request structure follows Binance documentation exactly
+3. **Selective Failure:** Only affects specific P2P endpoints
+4. **Consistent Pattern:** Multiple merchants report identical issue
+
+---
+
+## 🛠️ **Technical Details**
+
+### **Correct Request Format** *(Confirmed by Binance Support)*
+```bash
+curl --location 'https://api.binance.com/sapi/v1/c2c/ads/search?recvWindow=5000&timestamp={timestamp}&signature={signature}' \
+--header 'X-MBX-APIKEY: {api_key}' \
+--header 'Content-Type: application/json' \
+--data '{
+    "asset": "USDT",
+    "fiat": "USD",
+    "page": 1,
+    "rows": 10,
+    "tradeType": "BUY"
+}'
+```
+
+### **Key Implementation Points**
+- **Signature Scope:** Only `recvWindow`, `timestamp` in query string
+- **Body Parameters:** All trading parameters in JSON body
+- **Headers:** `X-MBX-APIKEY` and `Content-Type: application/json`
+- **Algorithm:** HMAC-SHA256 from query string only
+
+---
+
+## 🧪 **Reproduction Steps**
+
+### **Prerequisites**
+```bash
+pip install -r test/requirements.txt
+```
+
+### **Run Tests**
+```bash
+# Test the working endpoint (should succeed)
+python test/test_working_endpoint.py
+
+# Test the failing endpoints (will show -2008 error)
+python test/test_failing_endpoints.py
+```
+
+### **Expected Results**
+- **Working endpoint:** Returns marketplace data ✅
+- **Failing endpoints:** Return `-2008 Invalid Api-Key ID` ❌
+
+---
+
+## 📊 **Impact Analysis**
+
+### **Affected Functionality**
+| Feature | Status | Impact |
+|---------|--------|--------|
+| **Get Ads List** | ✅ Working | Basic marketplace access |
+| **Search Ads** | ❌ Failing | Cannot filter/search marketplace |
+| **Reference Prices** | ❌ Failing | No price benchmarking |
+| **Ad Categories** | ❌ Failing | Limited market analysis |
+
+### **Business Impact**
+- **Automated Trading:** Severely limited functionality
+- **Market Analysis:** Cannot access filtered data
+- **Price Discovery:** No reference price capabilities
+- **Bot Development:** Blocked advanced features
+
+---
+
+## 📞 **Support Status**
+
+### **Binance Support Case #144098731**
+- **Status:** ⏳ Awaiting backend team resolution
+- **Priority:** HIGH (production blocking)
+- **Evidence:** Complete technical documentation provided
+- **Next Steps:** Backend API key registration fix required
+
+### **What Binance Needs to Do**
+1. **Enable P2P API access** for affected API keys
+2. **Verify backend registration** in P2P systems
+3. **Remove access restrictions** blocking specific endpoints
+4. **Test and confirm** full functionality restored
+
+---
+
+## 🤝 **Contributing**
+
+### **How to Help**
+- **Reproduce the issue** using your own Binance API credentials
+- **Share testing results** in GitHub Issues
+- **Document workarounds** or partial solutions
+- **Update status** when Binance resolves the issue
+
+### **Testing Guidelines**
+1. **Never expose real API keys** in public repositories
+2. **Use placeholder credentials** in code examples
+3. **Document your testing environment** for reference
+4. **Report new findings** through GitHub Issues
+
+---
+
+## 🔒 **Security Notice**
+
+### **Credential Safety**
+- ✅ **No real API keys** exposed in this repository
+- ✅ **All sensitive data** properly sanitized
+- ✅ **Safe for public sharing** and collaboration
+
+### **Testing Safety**
+- **Use testnet credentials** when possible
+- **Mask production keys** in logs and screenshots
+- **Follow responsible disclosure** for security issues
+
+---
+
+## 📈 **Resolution Timeline**
+
+### **Current Phase: Awaiting Backend Fix**
+```
+[✅] Issue Discovery & Documentation
+[✅] Binance Support Engagement  
+[✅] Format Verification & Implementation
+[⏳] Backend Team Resolution ← WE ARE HERE
+[⏸️] Testing & Validation
+[⏸️] Production Deployment
+```
+
+### **Expected Resolution**
+When Binance fixes the backend registration issue:
+1. **Immediate activation** - No code changes required
+2. **Full functionality** - All P2P endpoints accessible
+3. **Production ready** - Complete implementation already done
+
+---
+
+## 📚 **Additional Resources**
+
+### **Official Documentation**
+- [Binance P2P API Documentation](https://binance-docs.github.io/apidocs/spot/en/#c2c-endpoints)
+- [API Authentication Guide](https://binance-docs.github.io/apidocs/spot/en/#signed-trade-and-user_data-endpoint-security)
+
+### **Community Resources**
+- [GitHub Issues](../../issues) - Latest updates and discussions
+- [Support Timeline](docs/binance_support_timeline.md) - Complete case documentation
+
+---
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## ⭐ **Star This Repository**
+
+If this documentation helped you understand or resolve similar Binance API issues, please star this repository to help others find it!
+
+---
+
+**📧 Questions?** Open a [GitHub Issue](../../issues/new) or check our [Contributing Guidelines](CONTRIBUTING.md).
+
+**🔔 Updates:** Watch this repository for notifications when the issue is resolved.
+
+**🐛 Similar Issues?** Use our [bug report template](.github/ISSUE_TEMPLATE/bug_report.md) to document your experience.
