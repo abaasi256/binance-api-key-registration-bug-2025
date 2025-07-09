@@ -58,8 +58,9 @@ tmp/
 optimize_repo.py
 timestam.py
 
-# Test outputs and results
-test_results/
+# Test outputs and results (exclude sensitive test data)
+test_results/*.log
+test_results/*_sensitive*
 support_communications/screenshots/
 coverage/
 .coverage
