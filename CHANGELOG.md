@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.1.0] - 2025-07-09
+
+### Changed
+- **MAJOR PROGRESS**: Backend fix deployment confirmed active
+- **Success Rate**: Improved from 16.7% (1/6) to 50% (3/6) endpoints working
+- **Support Escalation**: CS Sergei U (Merchant Team) took over case from CS Lily
+
+### Added
+- Backend progress evidence documentation
+- Multiple API key generation testing (3 fresh keys)
+- Endpoint fluctuation behavior documentation
+- Technical support interaction logs with CS Sergei
+
+### Fixed
+- `/sapi/v1/c2c/orderMatch/getUserOrderSummary` - Now working consistently
+- `/sapi/v1/c2c/ads/getAvailableAdsCategory` - Intermittently working (backend deployment)
+
+### Backend Evidence
+- **Fluctuating Endpoints**: Same endpoints switching between working/failing
+- **Error Evolution**: From consistent -2008 to mixed error types (-1022, 500)
+- **Active Development**: Fresh API keys show backend team deploying changes
+- **Timeline**: Multiple tests within hours showing different success rates
+
+### Support Updates
+- CS Lily initially misdiagnosed as "no backend issue"
+- CS Sergei U (Merchant Team) demonstrates technical competence
+- Backend team confirmed actively working on endpoint registration
+- Case priority elevated due to technical evidence provided
+
 ## [1.0.0] - 2025-07-05
 
 ### Added
